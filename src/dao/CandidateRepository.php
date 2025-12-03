@@ -15,4 +15,16 @@ class CandidatRepository
 
     }
 
+    public function searchAll():array
+    {
+        $query="SELECT * FROM candidats";    //* backtik : évite que le nom soit pris autrmeent
+        $stmt=$this->dbConnect->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    
+
 }
+
+?>

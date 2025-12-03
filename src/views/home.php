@@ -1,6 +1,6 @@
 <?php
 
-$data = $data ?? []; 
+$data = $data ?? []; // Assurez-vous que $data est défini
 
 function displayData($data): string
 {
