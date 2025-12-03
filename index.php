@@ -1,27 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
 <?php
-//votre formulaire  ici!
-  require 'header.php';
-  include './vues/formulaire.php';
-  require "./src/dao/CandidateRepository.php"; // Inclure le fichier du repository
+    // Contrôleur principal
+    require "./src/dao/DbConnection.php";
+    require "./src/dao/DepartmentRepository.php";
 
-  $repo = new CandidateRepository(); //Créer une instance du repository
+    $allowedPages = ['home', 'inscription']; // Liste des pages autorisées
+    $page = isset($_GET["page"]) && in_array($_GET["page"], $allowedPages) ? $_GET["page"] : 'home';
 
-  
-  ?>
-  <body>
-    
-<?php
-$password = "mot_de_passe_utilisateur123";
-$hashedPassword = encryptPassword($password);
-// Stockez $hashedPassword dans votre base de données
+    switch ($page) {
+        case 'inscription':
+            include "./src/views/inscription.php";
+            break;
 
-// Plus tard, pour vérifier :
-if (verifyPassword($password, $hashedPassword)) {
-    echo "Le mot de passe est correct !";
-} else {
-    echo "Mot de passe invalide.";
-}
-
+        default:
+            include "./src/views/home.php";
+            break;
+    }
 ?>
 </body>
 </html>

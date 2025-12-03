@@ -2,6 +2,6 @@
 return [ 
 "host"=>"localhost",
 "port"=>3306,
-"base"=>"db_guide",
+"base"=>"foire68",
 "user"=>"root",
 "pass"=>""];
