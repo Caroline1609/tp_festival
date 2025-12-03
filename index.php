@@ -1,29 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
 <?php
-    // Contrôleur principal
-    require "./src/dao/DbConnection.php";
-    require "./src/dao/DepartmentRepository.php";
+// Contrôleur principal
+require_once "./src/dao/DbConnection.php";
+require_once "./src/dao/DepartmentRepository.php";
+require_once "./src/dao/CandidateRepository.php";
 
-    $allowedPages = ['home', 'inscription']; // Liste des pages autorisées
-    $page = isset($_GET["page"]) && in_array($_GET["page"], $allowedPages) ? $_GET["page"] : 'home';
+// Démarrer la session pour les messages
+session_start();
 
-    switch ($page) {
-        case 'inscription':
-            include "./src/views/inscription.php";
-            break;
+// Définir la page à afficher
+$allowedPages = ['home', 'inscription', 'connexion', 'deconnexion'];
+$page = isset($_GET["page"]) && in_array($_GET["page"], $allowedPages) ? $_GET["page"] : 'home';
 
-        default:
-            include "./src/views/home.php";
-            break;
-    }
+// Définir le titre de la page
+$titles = [
+    'home' => 'Accueil - Foire aux Vins',
+    'inscription' => 'Inscription - Foire aux Vins',
+    'connexion' => 'Connexion - Foire aux Vins',
+    'deconnexion' => 'Déconnexion - Foire aux Vins'
+];
+$title = $titles[$page] ?? 'Foire aux Vins';
+
+// Inclure le header
+include "./header.php";
+
+// Afficher le contenu selon la page
+switch ($page) {
+    case 'inscription':
+        include "./src/views/inscription.php";
+        break;
+    
+    case 'connexion':
+        include "./src/views/connexion.php";
+        break;
+    
+    case 'deconnexion':
+        include "./src/views/deconnexion.php";
+        break;
+
+    default:
+        include "./src/views/home.php";
+        break;
+}
+
+// Inclure le footer
+include "./footer.php";
 ?>
-</body>
-</html>
