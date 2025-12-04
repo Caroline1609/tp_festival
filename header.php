@@ -22,10 +22,10 @@
             <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="inscription.php">Inscription</a>
+            <a class="nav-link" href="index.php?page=inscription">Inscription</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.php">Connexion</a>
+            <a class="nav-link" href="index.php?page=connexion">Connexion</a>
           </li>
         </ul>
       </div>
