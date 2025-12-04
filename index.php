@@ -23,7 +23,7 @@ $title = $titles[$page] ?? 'Foire aux Vins';
 // Charger les données pour la page d'accueil
 $data = [];
 if ($page === 'home') {
-    $objCandidat = new CandidatRepository();
+    $objCandidat = new CandidateRepository();
     $data = $objCandidat->searchAll();
 }
 
