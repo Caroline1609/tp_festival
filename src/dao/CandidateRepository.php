@@ -1,6 +1,6 @@
 <?php 
 
-class CandidatRepository 
+class CandidateRepository 
 {
     private ?PDO $dbConnect=null;
     private int $nbCol;
