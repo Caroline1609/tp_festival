@@ -23,7 +23,7 @@
                             Inscription réussie ! <a href="index.php?page=connexion">Se connecter</a>
                         </div>
                     <?php else: ?>
-                        <form action="../controllers/register.php" method="post">
+                        <form action="index.php?page=inscription" method="post">
                             <div class="mb-3">
                                 <label for="lastname" class="form-label">Nom :</label>
                                 <input type="text" class="form-control" id="lastname" name="lastname" 
