@@ -3,6 +3,7 @@
 require_once "./src/dao/DbConnection.php";
 require_once "./src/dao/DepartmentRepository.php";
 require_once "./src/dao/CandidateRepository.php";
+require_once "./src/controllers/register.php";
 
 // Démarrer la session pour les messages
 session_start();
