@@ -9,8 +9,8 @@ require_once "./src/controllers/register.php";
 session_start();
 
 // Définir la page à afficher
-$allowedPages = ['home', 'inscription', 'connexion', 'deconnexion'];
-$page = isset($_GET["page"]) && in_array($_GET["page"], $allowedPages) ? $_GET["page"] : 'home';
+$allowedPages = ['home', 'inscription', 'connexion', 'deconnexion']; // Pages autorisées
+$page = isset($_GET["page"]) && in_array($_GET["page"], $allowedPages) ? $_GET["page"] : 'home'; // Page par défaut : home
 
 // Définir le titre de la page
 $titles = [
