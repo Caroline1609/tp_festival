@@ -3,7 +3,6 @@
 require_once "./src/dao/DbConnection.php";
 require_once "./src/dao/DepartmentRepository.php";
 require_once "./src/dao/CandidateRepository.php";
-require_once "./src/controllers/register.php";
 require "./src/controllers/ctrl_accueil.php";
 require "./src/controllers/ctrl_inscription.php";
 
