@@ -23,16 +23,20 @@ function ctrlInscription()
         $department = trim($_POST['department'] ?? '');
         $age = trim($_POST['age'] ?? '');
 
-        $errors = [];
         // Validation des champs obligatoires
         if (empty($lastname) || empty($firstname) || empty($email) || empty($password) || empty($confirmPassword) || empty($department) || empty($age)) {
             $errors[] = "Tous les champs sont obligatoires.";
         }
 
         // Validation de l'email
-    //    if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      //      $errors[] = "L'adresse email n'est pas valide.";
-        //}
+        if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "L'adresse email n'est pas valide.";
+        }
+
+        // ✅ VÉRIFICATION SI L'EMAIL EXISTE DÉJÀ
+        if (!empty($email) && $objCandidat->emailExists($email)) {
+            $errors[] = "Cette adresse email est déjà utilisée.";
+        }
 
         // Validation du mot de passe
         if (!empty($password) && strlen($password) < 8) {
@@ -55,18 +59,24 @@ function ctrlInscription()
         }
 
         if (empty($errors)) {
+            try {
                 $result = $objCandidat->insert($lastname, $firstname, $email, $password, $department, $age);
-                echo $result;
-                if ($result == true) {
-                   //success = true;
-               $errors[] = "Inscription réussie ! Vous pouvez maintenant vous connecter.";
+                
+                if ($result) {
+                    $success = true;
+                    $_SESSION['success_message'] = "Inscription réussie ! Vous pouvez maintenant vous connecter.";
                     
-                    // Redirection vers la page de connexion après succès
-                    // header("Location: index.php?page=connexion");
+                    // Redirection vers la page de connexion
+                    header("Location: index.php?page=connexion");
                     exit();
                 } else {
                     $errors[] = "Une erreur est survenue lors de l'inscription. Veuillez réessayer.";
                 }
+            } catch (Exception $e) {
+                $errors[] = "Une erreur est survenue lors de l'inscription.";
+                // Pour le débogage (à retirer en production)
+                error_log($e->getMessage());
+            }
         }
     }
 
