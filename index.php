@@ -38,7 +38,7 @@ include "./header.php";
 // Afficher le contenu selon la page
 switch ($page) {
     case 'inscription':
-        ctrl_inscription();
+        ctrlInscription();
         break;
     
     case 'connexion':

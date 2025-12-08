@@ -2,10 +2,12 @@
 
 function ctrlAccueil()
 {
-$objCandidat= new CandidateRepository();
-
-$dataCandidat=$objCandidat->searchAll();
-//var_dump($dataCandidat);
-
-include "./src/views/home.php";
-} 
+    $objCandidat = new CandidateRepository();
+    $data = $objCandidat->searchAll(); 
+    
+    // Debug si besoin
+    // var_dump($data);
+    
+    include "./src/views/home.php";
+}
+?>

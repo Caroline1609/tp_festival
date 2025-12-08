@@ -23,6 +23,19 @@ class CandidateRepository
         return $stmt->fetchAll();
     }
 
+    public function update(array $data):bool
+{
+    $query="UPDATE candidates SET username=:username, password=:password, department=:department, age=:age WHERE email=:email";
+    $stmt= $this->dbconnect->prepare($query);
+    return $stmt->execute([
+        ':username'=>$data['username'],
+        ':email'=>$data['email'],
+        ':password'=>$data['password'],
+        ':department'=>$data['department'],
+        ':age'=>$data['age']
+    ]);
+}
+
     
 
 }
