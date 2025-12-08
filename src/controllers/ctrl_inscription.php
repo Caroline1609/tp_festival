@@ -23,15 +23,16 @@ function ctrlInscription()
         $department = trim($_POST['department'] ?? '');
         $age = trim($_POST['age'] ?? '');
 
+        $errors = [];
         // Validation des champs obligatoires
         if (empty($lastname) || empty($firstname) || empty($email) || empty($password) || empty($confirmPassword) || empty($department) || empty($age)) {
             $errors[] = "Tous les champs sont obligatoires.";
         }
 
         // Validation de l'email
-        if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "L'adresse email n'est pas valide.";
-        }
+    //    if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      //      $errors[] = "L'adresse email n'est pas valide.";
+        //}
 
         // Validation du mot de passe
         if (!empty($password) && strlen($password) < 8) {
@@ -53,24 +54,19 @@ function ctrlInscription()
             $errors[] = "Veuillez sélectionner un département valide.";
         }
 
-        // Si pas d'erreurs, on insère
         if (empty($errors)) {
-            try {
                 $result = $objCandidat->insert($lastname, $firstname, $email, $password, $department, $age);
-                
-                if ($result) {
-                    $success = true;
-                    $_SESSION['success_message'] = "Inscription réussie ! Vous pouvez maintenant vous connecter.";
+                echo $result;
+                if ($result == true) {
+                   //success = true;
+               $errors[] = "Inscription réussie ! Vous pouvez maintenant vous connecter.";
                     
                     // Redirection vers la page de connexion après succès
                     // header("Location: index.php?page=connexion");
-                    // exit();
+                    exit();
                 } else {
                     $errors[] = "Une erreur est survenue lors de l'inscription. Veuillez réessayer.";
                 }
-            } catch (Exception $e) {
-                $errors[] = "Erreur : " . $e->getMessage();
-            }
         }
     }
 

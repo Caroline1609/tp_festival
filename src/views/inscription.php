@@ -26,20 +26,19 @@
                         <form action="index.php?page=inscription" method="post">
                             <div class="mb-3">
                                 <label for="lastname" class="form-label">Nom :</label>
-                                <input type="text" class="form-control" id="lastname" name="lastname" 
-                                        value="<?php echo htmlspecialchars($_POST['lastname'] ?? ''); ?>" required>
+                                <input type="text" class="form-control" id="lastname" name="lastname"  required>
                             </div>
                             
                             <div class="mb-3">
                                 <label for="firstname" class="form-label">Prénom :</label>
                                 <input type="text" class="form-control" id="firstname" name="firstname" 
-                                        value="<?php echo htmlspecialchars($_POST['firstname'] ?? ''); ?>" required>
+                                         required>
                             </div>
                             
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email :</label>
                                 <input type="email" class="form-control" id="email" name="email" 
-                                        value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>" required>
+                                         required>
                             </div>
                             
                             <div class="mb-3">
@@ -61,7 +60,6 @@
                                         $objDept = new DepartmentRepository();
                                         $tabData = $objDept->searchAll();
                                         foreach ($tabData as $dept) {
-                                            $selected = (isset($_POST['department']) && $_POST['department'] == $dept["id_dep"]) ? 'selected' : '';
                                             echo "<option value='" . htmlspecialchars($dept["id_dep"]) . "' $selected>" . htmlspecialchars($dept["Name"]) . "</option>";
                                         }
                                     ?>
@@ -70,8 +68,7 @@
                             
                             <div class="mb-3">
                                 <label for="age" class="form-label">Votre âge :</label>
-                                <input type="number" class="form-control" id="age" name="age" step="1" min="18" max="120" 
-                                        value="<?php echo htmlspecialchars($_POST['age'] ?? ''); ?>" required>
+                                <input type="number" class="form-control" id="age" name="age" step="1" min="18" max="120"  required>
                                 <div class="form-text">Vous devez avoir plus de 18 ans pour participer au jeu concours.</div>
                             </div>
                             
