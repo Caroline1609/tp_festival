@@ -16,7 +16,10 @@ class CandidateRepository
 
     public function searchAll(): array
     {
-        $query = "SELECT * FROM candidats WHERE archive_user = 0";
+        $query = "SELECT c.*, d.Name as nom_departement 
+                  FROM candidats c 
+                  LEFT JOIN departements d ON c.departement_user = d.id_dep 
+                  WHERE c.archive_user = 0";
         $stmt = $this->dbConnect->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll();

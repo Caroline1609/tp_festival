@@ -43,7 +43,6 @@
                         echo "<div class='table-responsive'>";
                         echo "<table class='table table-hover mb-0'>";
                         echo "<thead><tr>";
-                        echo "<th><i class='fas fa-hashtag'></i> ID</th>";
                         echo "<th><i class='fas fa-user'></i> Nom</th>";
                         echo "<th><i class='fas fa-user'></i> Prénom</th>";
                         echo "<th><i class='fas fa-envelope'></i> Email</th>";
@@ -53,11 +52,10 @@
 
                         foreach ($data as $row) {
                             echo "<tr>";
-                            echo "<td>" . htmlspecialchars($row['id_user']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['lastname_user']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['firstname_user']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['mail_user']) . "</td>";
-                            echo "<td><span class='badge' style='background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);'>" . htmlspecialchars($row['departement_user']) . "</span></td>";
+                            echo "<td><span class='badge badge-department'>" . htmlspecialchars($row['departement_user']) . " - " . htmlspecialchars($row['nom_departement']) . "</span></td>";
                             echo "<td>" . htmlspecialchars($row['age_user']) . " ans</td>";
                             echo "</tr>";
                         }

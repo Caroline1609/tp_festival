@@ -37,6 +37,15 @@ body {
     width: auto;
 }
 
+.navbar-toggler {
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
 .navbar-nav .nav-link {
     color: rgba(255, 255, 255, 0.85) !important;
     font-weight: 500;
@@ -88,7 +97,8 @@ body {
     padding: 1.5rem;
 }
 
-.card-header h3 {
+.card-header h3,
+.card-header h4 {
     margin: 0;
     font-weight: 600;
 }
@@ -156,6 +166,11 @@ body {
     padding-left: 20px;
 }
 
+/* Liens dans les formulaires */
+.text-link-secondary {
+    color: var(--secondary-color);
+}
+
 /* Table moderne pour la page d'accueil */
 table {
     background: white;
@@ -189,9 +204,35 @@ table tbody tr:last-child td {
     border-bottom: none;
 }
 
+/* Badge pour les départements */
+.badge-department {
+    background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
 /* Container principal */
 .container {
     max-width: 1200px;
+}
+
+/* Footer */
+footer {
+    margin-top: 3rem;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+    color: white;
+}
+
+footer h5 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+footer p {
+    margin-bottom: 0.25rem;
 }
 
 /* Animation de chargement */
@@ -222,5 +263,10 @@ table tbody tr:last-child td {
     
     table {
         font-size: 0.9rem;
+    }
+    
+    table thead th,
+    table tbody td {
+        padding: 0.5rem;
     }
 }

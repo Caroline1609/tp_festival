@@ -5,7 +5,8 @@ require_once "./src/dao/DepartmentRepository.php";
 require_once "./src/dao/CandidateRepository.php";
 require "./src/controllers/ctrl_accueil.php";
 require "./src/controllers/ctrl_inscription.php";
-require "./src/controllers/ctrl_connexion.php";
+require "./src/controllers/ctrl_login.php";
+require "./src/controllers/ctrl_deconnexion.php";
 
 // Démarrer la session pour les messages
 session_start();
@@ -40,11 +41,11 @@ switch ($page) {
         break;
     
     case 'connexion':
-        ctrlConnexion();
+        ctrlLogin();
         break;
     
     case 'deconnexion':
-        include "./src/views/deconnexion.php";
+        ctrlDeconnexion();
         break;
 
     default:

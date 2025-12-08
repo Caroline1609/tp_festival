@@ -44,7 +44,7 @@
                         
                         <div class="text-center">
                             <p class="mb-0">Pas encore inscrit ? 
-                                <a href="index.php?page=inscription" class="text-decoration-none fw-bold" style="color: var(--secondary-color);">
+                                <a href="index.php?page=inscription" class="text-decoration-none fw-bold text-link-secondary">
                                     Créer un compte
                                 </a>
                             </p>
