@@ -16,7 +16,7 @@ class CandidateRepository
 
     public function searchAll(): array
     {
-        $query = "SELECT * FROM candidats";
+        $query = "SELECT * FROM candidats WHERE archive_user = 0";
         $stmt = $this->dbConnect->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll();
@@ -30,11 +30,20 @@ class CandidateRepository
         return $stmt->fetchColumn() > 0;
     }
 
+    public function findByEmail(string $email): ?array
+    {
+        $query = "SELECT * FROM candidats WHERE mail_user = :email AND archive_user = 0 LIMIT 1";
+        $stmt = $this->dbConnect->prepare($query);
+        $stmt->execute([':email' => trim($email)]);
+        $result = $stmt->fetch();
+        return $result ? $result : null;
+    }
+
     public function insert(string $_lastname, string $_firstname, string $_mail, string $_pass, int $_department, int $_age, int $_archive_user = 0): bool
     {     
         $lastname = trim($_lastname);
         $firstname = trim($_firstname);
-        $mail = trim($_mail); // ✅ Ne pas utiliser filter_var ici, déjà validé dans le contrôleur
+        $mail = trim($_mail);
         $pass = password_hash(trim($_pass), PASSWORD_ARGON2ID);
         $department = (int)$_department;
         $age = (int)$_age;

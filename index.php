@@ -5,15 +5,14 @@ require_once "./src/dao/DepartmentRepository.php";
 require_once "./src/dao/CandidateRepository.php";
 require "./src/controllers/ctrl_accueil.php";
 require "./src/controllers/ctrl_inscription.php";
-
-
+require "./src/controllers/ctrl_connexion.php";
 
 // Démarrer la session pour les messages
 session_start();
 
 // Définir la page à afficher
-$allowedPages = ['home', 'inscription', 'connexion', 'deconnexion']; // Pages autorisées
-$page = isset($_GET["page"]) && in_array($_GET["page"], $allowedPages) ? $_GET["page"] : 'home'; // Page par défaut : home
+$allowedPages = ['home', 'inscription', 'connexion', 'deconnexion'];
+$page = isset($_GET["page"]) && in_array($_GET["page"], $allowedPages) ? $_GET["page"] : 'home';
 
 // Définir le titre de la page
 $titles = [
@@ -41,7 +40,7 @@ switch ($page) {
         break;
     
     case 'connexion':
-        include "./src/views/connexion.php";
+        ctrlConnexion();
         break;
     
     case 'deconnexion':
