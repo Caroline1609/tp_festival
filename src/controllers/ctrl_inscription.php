@@ -39,17 +39,17 @@ function ctrlInscription()
         }
 
         // Validation du mot de passe
-        if (!empty($password) && strlen($password) < 8) {
+        if (!empty($password) && strlen($password) < 8) { // Le mot de passe doit contenir au moins 8 caractères
             $errors[] = "Le mot de passe doit contenir au moins 8 caractères.";
         }
 
         // Vérification de la correspondance des mots de passe
-        if (!empty($password) && !empty($confirmPassword) && $password !== $confirmPassword) {
+        if (!empty($password) && !empty($confirmPassword) && $password !== $confirmPassword) { // Les mots de passe ne correspondent pas
             $errors[] = "Les mots de passe ne correspondent pas.";
         }
 
         // Validation de l'âge
-        if (!empty($age) && (!is_numeric($age) || $age < 18)) {
+        if (!empty($age) && (!is_numeric($age) || $age < 18)) { // L'âge minimum est de 18 ans
             $errors[] = "Vous devez avoir au moins 18 ans pour vous inscrire.";
         }
 
@@ -60,7 +60,7 @@ function ctrlInscription()
 
         if (empty($errors)) {
             try {
-                $result = $objCandidat->insert($lastname, $firstname, $email, $password, $department, $age);
+                $result = $objCandidat->insert($lastname, $firstname, $email, $password, $department, $age); // Insertion du candidat
                 
                 if ($result) {
                     $success = true;
