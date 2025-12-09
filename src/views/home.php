@@ -45,7 +45,6 @@
                         echo "<thead><tr>";
                         echo "<th><i class='fas fa-user'></i> Nom</th>";
                         echo "<th><i class='fas fa-user'></i> Prénom</th>";
-                        echo "<th><i class='fas fa-envelope'></i> Email</th>";
                         echo "<th><i class='fas fa-map-marker-alt'></i> Département</th>";
                         echo "<th><i class='fas fa-birthday-cake'></i> Âge</th>";
                         echo "</tr></thead><tbody>";
@@ -54,8 +53,7 @@
                             echo "<tr>";
                             echo "<td>" . htmlspecialchars($row['lastname_user']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['firstname_user']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['mail_user']) . "</td>";
-                            echo "<td><span class='badge badge-department'>" . htmlspecialchars($row['departement_user']) . " - " . htmlspecialchars($row['nom_departement']) . "</span></td>";
+                            echo "<td><span class='badge badge-department'>"  . htmlspecialchars($row['nom_departement']) . "</span></td>";
                             echo "<td>" . htmlspecialchars($row['age_user']) . " ans</td>";
                             echo "</tr>";
                         }

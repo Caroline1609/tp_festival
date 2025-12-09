@@ -18,7 +18,7 @@ class CandidateRepository
     {
         $query = "SELECT c.*, d.Name as nom_departement 
                   FROM candidats c 
-                  LEFT JOIN departements d ON c.departement_user = d.id_dep 
+                  INNER JOIN departements d ON c.departement_user = d.name
                   WHERE c.archive_user = 0";
         $stmt = $this->dbConnect->prepare($query);
         $stmt->execute();
