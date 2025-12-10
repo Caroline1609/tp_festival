@@ -57,8 +57,7 @@
                                 <select class="form-select" id="department" name="department" required>
                                     <option value="" selected disabled>Choisissez un département</option>
                                     <?php
-                                        $objDept = new DepartmentRepository();
-                                        $tabData = $objDept->searchAll();
+                                    
                                         foreach ($tabData as $dept) {
                                             echo "<option value='" . htmlspecialchars($dept["id_dep"]) . "' $selected>" . htmlspecialchars($dept["Name"]) . "</option>";
                                         }

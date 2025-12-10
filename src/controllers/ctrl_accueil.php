@@ -1,8 +1,9 @@
 <?php
 use src\dao\CandidateRepository; 
 
-function ctrlAccueil(CandidateRepository $objCandidat)
+function ctrlAccueil()
 {
+    $objCandidat = new CandidateRepository();
     $data = $objCandidat->searchAll();
     
     include "./src/views/home.php";

@@ -14,11 +14,11 @@ class DepartmentRepository
 
     public function searchAll(): array
     {
-        $query = "SELECT id_dep, Name FROM departements"; 
+        $query = "SELECT id_dep, `Name` FROM departements"; 
         
         $stmt = $this->dbConnect->prepare($query);
 
-
+        $stmt->execute();
         return $stmt->fetchAll();
     }
 }

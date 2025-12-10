@@ -3,7 +3,7 @@
 use src\dao\CandidateRepository;
 
 // Le contrôleur reçoit le Repository en argument
-function ctrlLogin(CandidateRepository $objCandidat)
+function ctrlLogin()
 {
     // Initialisation du repository
     $objCandidat = new CandidateRepository();

@@ -1,15 +1,16 @@
 <?php
 
-use src\dao\CandidateRepository; // Indiquer le namespace complet
-use src\dao\DepartmentRepository; 
 
+
+use src\dao\DepartmentRepository;
+use src\dao\CandidateRepository;
 
 // Le contrôleur reçoit ses outils en arguments
-function ctrlInscription(CandidateRepository $objCandidat, DepartmentRepository $objDept): void
+function ctrlInscription(): void
 {
 
+    $objDept = new DepartmentRepository();
     $tabData = $objDept->searchAll();
-    
     $errors = [];
     $success = false;
     
@@ -36,6 +37,7 @@ function ctrlInscription(CandidateRepository $objCandidat, DepartmentRepository 
             $errors[] = "L'adresse email n'est pas valide.";
         }
 
+        $objCandidat = new CandidateRepository();
         // ✅ VÉRIFICATION SI L'EMAIL EXISTE DÉJÀ
         if (!empty($email) && $objCandidat->emailExists($email)) {
             $errors[] = "Cette adresse email est déjà utilisée.";

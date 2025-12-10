@@ -8,10 +8,11 @@ require "./src/controllers/ctrl_accueil.php";
 require "./src/controllers/ctrl_inscription.php";
 require "./src/controllers/ctrl_login.php";
 require "./src/controllers/ctrl_deconnexion.php";
+//  use src\dao\CandidateRepository;
+//  use src\dao\DepartmentRepository;
 
-
-$candidateRepository = new src\dao\CandidateRepository(); 
-$departmentRepository = new src\dao\DepartmentRepository(); 
+// $candidateRepository = new src\dao\CandidateRepository(); 
+// $departmentRepository = new src\dao\DepartmentRepository(); 
 
 // Définir la page à afficher
 $allowedPages = ['home', 'inscription', 'connexion', 'deconnexion'];
@@ -34,11 +35,11 @@ include "./header.php";
 switch ($page) {
     case 'inscription':
         // On passe les deux repositories nécessaires au contrôleur d'inscription
-        ctrlInscription($candidateRepository, $departmentRepository);
+        ctrlInscription();
         break;
     
     case 'connexion':
-        ctrlLogin($candidateRepository);
+        ctrlLogin();
         break;
     
     case 'deconnexion':
@@ -46,7 +47,7 @@ switch ($page) {
         break;
 
     default: // home
-        ctrlAccueil($candidateRepository);
+        ctrlAccueil();
         break;
 }
 
