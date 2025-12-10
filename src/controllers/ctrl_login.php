@@ -1,6 +1,9 @@
 <?php
 
-function ctrlLogin()
+use src\dao\CandidateRepository;
+
+// Le contrôleur reçoit le Repository en argument
+function ctrlLogin(CandidateRepository $objCandidat)
 {
     // Initialisation du repository
     $objCandidat = new CandidateRepository();

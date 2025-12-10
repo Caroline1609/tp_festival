@@ -1,27 +1,24 @@
 <?php 
+namespace src\dao;
+
+use PDO;
 
 class DepartmentRepository 
 {
-    private ?PDO $dbConnect=null;
-    private int $nbCol;
-    private array $tabColName = [];
+    private PDO $dbConnect;
 
     public function __construct()
     {
-        $this->dbConnect=DbConnection::getInstance();
-        $query="SELECT *  FROM departements";
-        $stmt= $this->dbConnect->query($query);            //l'une est une varible et l'autre une fonction
-        $this->nbCol=$stmt->rowCount();                    //renvoie le nombre de colonne qu'il y a dans le jeu de résultats
-
+        $this->dbConnect = DbConnection::getInstance();
     }
 
-    public function searchAll():array
+    public function searchAll(): array
     {
-        $query="SELECT `id_dep`, `Name` FROM departements";     //`` backtik : évite que le nom soit pris autrmeent 
-        $stmt=$this->dbConnect->prepare($query);
-        $stmt->execute();
+        $query = "SELECT id_dep, Name FROM departements"; 
+        
+        $stmt = $this->dbConnect->prepare($query);
+
+
         return $stmt->fetchAll();
     }
-
-
 }

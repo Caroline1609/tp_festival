@@ -1,16 +1,19 @@
 <?php
 
-function ctrlInscription()
+use src\dao\CandidateRepository; // Indiquer le namespace complet
+use src\dao\DepartmentRepository; 
+
+
+// Le contrôleur reçoit ses outils en arguments
+function ctrlInscription(CandidateRepository $objCandidat, DepartmentRepository $objDept): void
 {
-    // Initialisation des repositories
-    $objCandidat = new CandidateRepository();
-    $objDept = new DepartmentRepository();
+
     $tabData = $objDept->searchAll();
     
-    // Variables pour la vue
     $errors = [];
     $success = false;
-
+    
+    $inputData = [];
     // Traitement du formulaire
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         

@@ -1,19 +1,22 @@
 <?php
-// Contrôleur principal
-require_once "./src/dao/DbConnection.php";
-require_once "./src/dao/DepartmentRepository.php";
-require_once "./src/dao/CandidateRepository.php";
+// 1. Démarrer la session
+session_start();
+
+require "./vendor/autoload.php";
+
 require "./src/controllers/ctrl_accueil.php";
 require "./src/controllers/ctrl_inscription.php";
 require "./src/controllers/ctrl_login.php";
 require "./src/controllers/ctrl_deconnexion.php";
-require "./vendor/autoload.php";
-// Démarrer la session pour les messages
-session_start();
+
+
+$candidateRepository = new src\dao\CandidateRepository(); 
+$departmentRepository = new src\dao\DepartmentRepository(); 
 
 // Définir la page à afficher
 $allowedPages = ['home', 'inscription', 'connexion', 'deconnexion'];
-$page = isset($_GET["page"]) && in_array($_GET["page"], $allowedPages) ? $_GET["page"] : 'home';
+$page = $_GET["page"] ?? 'home';
+$page = in_array($page, $allowedPages) ? $page : 'home';
 
 // Définir le titre de la page
 $titles = [
@@ -24,32 +27,26 @@ $titles = [
 ];
 $title = $titles[$page] ?? 'Foire aux Vins';
 
-// Charger les données pour la page d'accueil
-$data = [];
-if ($page === 'home') {
-    $objCandidat = new CandidateRepository();
-    $data = $objCandidat->searchAll();
-}
-
 // Inclure le header
 include "./header.php";
 
-// Afficher le contenu selon la page
+// Afficher le contenu selon la page et passer les dépendances
 switch ($page) {
     case 'inscription':
-        ctrlInscription();
+        // On passe les deux repositories nécessaires au contrôleur d'inscription
+        ctrlInscription($candidateRepository, $departmentRepository);
         break;
     
     case 'connexion':
-        ctrlLogin();
+        ctrlLogin($candidateRepository);
         break;
     
     case 'deconnexion':
         ctrlDeconnexion();
         break;
 
-    default:
-        ctrlAccueil();
+    default: // home
+        ctrlAccueil($candidateRepository);
         break;
 }
 

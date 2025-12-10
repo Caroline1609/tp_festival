@@ -1,4 +1,9 @@
 <?php
+
+namespace src\dao;
+use PDO;
+use PDOException;
+
 final class DbConnection
 {
 
@@ -29,7 +34,7 @@ final class DbConnection
             try {
                 self::$connexion = new PDO("mysql:host=" . self::$host . ";dbname=" . self::$base . ";port=" . self::$port . ";charset=utf8", self::$user, self::$pass, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
             
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 die("database connexion échouée:" . $e->getMessage());
             }
         }

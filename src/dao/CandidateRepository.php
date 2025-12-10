@@ -2,19 +2,15 @@
 namespace src\dao;
 
 use PDO;
+use PDOException;
 
 class CandidateRepository 
 {
-    private ?PDO $dbConnect = null;
-    private int $nbCol;
-    private array $tabColName = [];
+    private PDO $dbConnect;
 
     public function __construct()
     {
         $this->dbConnect = DbConnection::getInstance();
-        $query = "SELECT * FROM candidats";
-        $stmt = $this->dbConnect->query($query);
-        $this->nbCol = $stmt->rowCount();
     }
 
     public function searchAll(): array
