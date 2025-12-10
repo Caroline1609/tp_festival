@@ -7,7 +7,7 @@ require "./src/controllers/ctrl_accueil.php";
 require "./src/controllers/ctrl_inscription.php";
 require "./src/controllers/ctrl_login.php";
 require "./src/controllers/ctrl_deconnexion.php";
-//require "./vendor/autoload.php";
+require "./vendor/autoload.php";
 // Démarrer la session pour les messages
 session_start();
 

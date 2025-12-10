@@ -2,7 +2,6 @@
 namespace src\dao;
 
 use PDO;
-use Exception;
 
 class CandidateRepository 
 {
