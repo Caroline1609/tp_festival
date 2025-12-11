@@ -33,8 +33,9 @@ body {
 }
 
 .navbar-brand img {
-    height: 40px;
+    height: 99px;
     width: auto;
+    margin-left: 51px;
 }
 
 .navbar-toggler {
