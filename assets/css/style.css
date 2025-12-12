@@ -3,8 +3,6 @@
     --primary-color: #8B0000;
     --secondary-color: #DC143C;
     --accent-color: #FFD700;
-    --dark-bg: #1a1a1a;
-    --light-bg: #f8f9fa;
     --text-dark: #333;
     --text-light: #ffffff;
 }
@@ -79,7 +77,6 @@ body {
     width: 100%;
 }
 
-/* Cards avec effet moderne */
 .card {
     border: none;
     border-radius: 15px;
