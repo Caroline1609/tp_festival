@@ -41,8 +41,8 @@ function ctrlLogin()
                     $_SESSION['user_email'] = $user['mail_user'];
                     $_SESSION['success_message'] = "Connexion réussie ! Bienvenue " . htmlspecialchars($user['firstname_user']) . " !";
                     
-                    // Redirection vers la page d'accueil
-                    header("Location: index.php?page=home");
+                    // Redirection vers la page de compte
+                    header("Location: compte.php");
                     exit();
                 } else {
                     $errors[] = "Email ou mot de passe incorrect.";

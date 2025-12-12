@@ -150,6 +150,7 @@ body {
     border-radius: 10px;
     padding: 1rem 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .alert-success {
@@ -163,8 +164,15 @@ body {
 }
 
 .alert ul {
-    margin-bottom: 0;
-    padding-left: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    text-align: left;
+}
+
+.alert li {
+    margin-bottom: 0.25rem;
 }
 
 /* Liens dans les formulaires */
